@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/JobData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/RequestData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entities/Job.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/IAccountAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/JobService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Doctor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Nurse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Patient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Person.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2mahZhLeQsJ8mT5ZrULfgIf3n6w" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code_di_hoc/code/JAVA/code_di_hoc/finaltest&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="" />
+      <created>1727320651389</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727320651389</updated>
+    </task>
+    <servers />
+  </component>
+</project>
