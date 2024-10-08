@@ -23,6 +23,7 @@ public class LoginService {
                 System.out.println("Sai mat khau!");
             } else {
                 System.out.println("Dang nhap thanh cong!");
+                break;
             }
         }
     }

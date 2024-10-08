@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Job {
     private int userId;
+    private int id;
+    private static int autoId;
     private WorkPlaceType placeType;
     private TimeType timeType;
     private String jobTitle;
@@ -25,8 +27,9 @@ public class Job {
         AVAILABLE, UNAVAILABLE
     }
 
-    public Job(int userId, WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status) {
+    public Job(int userId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status) {
         this.userId = userId;
+        this.id = ++autoId;
         this.placeType = placeType;
         this.timeType = timeType;
         this.jobTitle = jobTitle;
@@ -100,12 +103,15 @@ public class Job {
         this.status = status;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String printDetail() {
         return String.join("\n", getJobTitle(), getStatus().toString(), getSalary().toString(), getEmployeeNumber().toString(), getPlaceType().toString(), getTimeType().toString(), getJobDescribe());
     }
 
     public String printBrief() {
-        return String.join("\n", getJobTitle(), getStatus().toString(), getPlaceType().toString(), getTimeType().toString());
-
+        return String.join(" ",getId().toString() + ".", getJobTitle(), getStatus().toString(), getPlaceType().toString(), getTimeType().toString());
     }
 }

@@ -17,16 +17,15 @@ public class JobService {
         int employeeNumber = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhap luong cua cong viec theo thang: ");
         int salary = Integer.parseInt(scanner.nextLine());
-
         Job.WorkPlaceType workPlaceType = typeChoice(scanner);
         Job.TimeType timeType = timeChoice(scanner);
-
         Job job = new Job(account.getId(), workPlaceType, timeType, jobTitle, jobDescribe, employeeNumber, salary, Job.Status.AVAILABLE);
-        JobData.jobList.add(job);
+        JobData.saveJob(job);
         System.out.println("Tao cong viec thanh cong!");
         return job;
     }
 
+//    typeService
     public Job.WorkPlaceType typeChoice(Scanner scanner) {
         System.out.print("Chon noi lam viec: \n  1. Lam o nha\n  2. Lam ben ngoai");
         int choiceWP = Integer.parseInt(scanner.nextLine());

@@ -19,7 +19,7 @@ public class JobPostService {
 
 //    listJob
     public void listJob () {
-        for (Job job : JobData.jobList) {
+        for (Job job : JobData.getJobList()) {
             System.out.print(job.printBrief());
         }
     }
@@ -28,7 +28,7 @@ public class JobPostService {
     public void findJob (Scanner scanner) {
         System.out.print("Nhap cong viec ban muon tim: ");
         String jobNeedle = scanner.nextLine();
-        for (Job job : JobData.jobList) {
+        for (Job job : JobData.getJobList()) {
             if (job.getJobTitle().contains(jobNeedle)) {
                 displayedList.add(job);
             }
@@ -85,6 +85,12 @@ public class JobPostService {
         printFilteredJob();
     }
 
+    private void printFilteredJob() {
+        for (Job job : displayedList) {
+            System.out.println(job.printBrief());
+        }
+    }
+
 //    selectJob
     public void selectJob (Scanner scanner) {
         System.out.print("Nhap cong viec ban muon xem: ");
@@ -93,10 +99,6 @@ public class JobPostService {
         System.out.println(job.printDetail());
     }
 
-    private void printFilteredJob() {
-        for (int i = 0; i < displayedList.size(); ++i) {
-            System.out.print(i + ". " + displayedList.get(i).printBrief());
-        }
-    }
+
 
 }
