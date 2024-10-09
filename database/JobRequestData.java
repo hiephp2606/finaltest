@@ -19,5 +19,11 @@ public class JobRequestData {
         jobRequestMap.put(jobRequest.getId(), jobRequest);
     }
 
+    public static JobRequest getJobRequestById (int id) {
+        return jobRequestMap.get(id);
+    }
 
+    public static String getCVById (int id) {
+        return jobRequestMap.get(id).getCV();
+    }
 }

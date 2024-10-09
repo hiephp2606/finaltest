@@ -1,10 +1,7 @@
 package entities;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Job {
-    private int userId;
+    private int PosterId;
     private int id;
     private static int autoId;
     private WorkPlaceType placeType;
@@ -27,8 +24,12 @@ public class Job {
         AVAILABLE, UNAVAILABLE
     }
 
-    public Job(int userId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status) {
-        this.userId = userId;
+    public enum JobStatus {
+        ACTIVE, INACTIVE
+    }
+
+    public Job(int PosterId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status) {
+        this.PosterId = PosterId;
         this.id = ++autoId;
         this.placeType = placeType;
         this.timeType = timeType;
@@ -39,12 +40,12 @@ public class Job {
         this.status = status;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getPosterId() {
+        return PosterId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPosterId(int posterId) {
+        PosterId = posterId;
     }
 
     public WorkPlaceType getPlaceType() {

@@ -2,20 +2,23 @@ package database;
 
 import entities.Account;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AccountData {
-    public static List<Account> accountList;
+    public static Map<Integer, Account> accountMap = new HashMap<>();
 
     static {
-        accountList = new ArrayList<>();
-        accountList.add(new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", "123", "h"));
+        Account account = new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", "123", "h", Account.AccountStatus.ACTIVE);
+        accountMap.put(account.getId(), account);
     }
 
     public static void addAccount (Account a){
-        accountList.add(a);
+        accountMap.put(a.getId(), a);
+    }
+
+    public static Account getAccountById (int id) {
+        return accountMap.get(id);
     }
 
 //    public static Account findAccount (String username, String password) {
@@ -30,7 +33,7 @@ public class AccountData {
 
 //    checkAccount
     public static Account matchUsername (String username) {
-        for (Account a: accountList) {
+        for (Account a: accountMap.values()) {
             if (a.getUsername().equals(username)) {
                 return a;
             }

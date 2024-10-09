@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entities/JobRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/JobData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/RequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobRequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/JobRequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobRequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Job.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/FinderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/FinderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/JobPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/JobRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/JobRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/FinderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/code_di_hoc/code/JAVA/code_di_hoc/finaltest",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code_di_hoc/code/JAVA/code_di_hoc/finaltest&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -20,7 +20,7 @@ public class RegisterService {
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        return new Account(userName, password, Account.Role.GUEST, name, dateOfBirth, phoneNumber, email);
+        return new Account(userName, password, Account.Role.GUEST, name, dateOfBirth, phoneNumber, email, Account.AccountStatus.INACTIVE);
     }
 
     //    adminService

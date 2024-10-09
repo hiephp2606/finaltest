@@ -10,8 +10,9 @@ public class Account {
     private String dateOfBirth;
     private String phoneNumber;
     private String email;
+    private AccountStatus accountStatus;
 
-    public Account(String username, String password, Role role, String name, String dateOfBirth, String phoneNumber, String email) {
+    public Account(String username, String password, Role role, String name, String dateOfBirth, String phoneNumber, String email, AccountStatus accountStatus) {
         this.id = ++autoId;
         this.username = username;
         this.password = password;
@@ -20,12 +21,16 @@ public class Account {
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.accountStatus = accountStatus;
     }
 
     public enum Role {
         GURU, ADMIN, FINDER, POSTER, GUEST
     }
 
+    public enum AccountStatus {
+        ACTIVE, INACTIVE
+    }
     public int getId() {
         return id;
     }
@@ -96,5 +101,13 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(AccountStatus accountStatus) {
+        this.accountStatus = accountStatus;
     }
 }

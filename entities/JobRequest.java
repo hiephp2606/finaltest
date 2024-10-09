@@ -1,9 +1,10 @@
 package entities;
 
+import database.AccountData;
 import database.JobData;
 // for everyone
 public class JobRequest {
-    private int userId;
+    private int finderId;
     private int jobId;
     private int id;
     private static int autoId;
@@ -14,9 +15,9 @@ public class JobRequest {
         PENDING, ACCEPT, REJECT
     }
 
-    public JobRequest(int userId, int jobId, Status status, String CV) {
+    public JobRequest(int finderId, int jobId, Status status, String CV) {
         this.jobId = jobId;
-        this.userId = userId;
+        this.finderId = finderId;
         this.id = ++autoId;
         this.status = status;
         this.CV = CV;
@@ -62,16 +63,23 @@ public class JobRequest {
         this.CV = CV;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getFinderId() {
+        return finderId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setFinderId(int finderId) {
+        this.finderId = finderId;
     }
+
 
     public String printBrief() {
         String jobTitle = JobData.getJobById(getJobId()).getJobTitle();
         return String.join(" ",getId().toString() + ".", jobTitle, getStatus().toString());
+    }
+
+    public String printDetail() {
+        String finderName = AccountData.getAccountById(getFinderId()).getName();
+        String jobTitle = JobData.getJobById(getJobId()).getJobTitle();
+        return String.join(" ",getId().toString() + ".",finderName, "-",  jobTitle);
     }
 }
