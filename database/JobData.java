@@ -22,4 +22,8 @@ public class JobData {
     public static List<Job> getJobList() {
         return new ArrayList<>(jobMap.values());
     }
+
+    public static void removeJob(int id) {
+        jobMap.remove(id);
+    }
 }

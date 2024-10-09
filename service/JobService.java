@@ -19,7 +19,7 @@ public class JobService {
         int salary = Integer.parseInt(scanner.nextLine());
         Job.WorkPlaceType workPlaceType = typeChoice(scanner);
         Job.TimeType timeType = timeChoice(scanner);
-        Job job = new Job(account.getId(), workPlaceType, timeType, jobTitle, jobDescribe, employeeNumber, salary, Job.Status.AVAILABLE);
+        Job job = new Job(account.getId(), workPlaceType, timeType, jobTitle, jobDescribe, employeeNumber, salary, Job.Status.AVAILABLE, Job.JobStatus.INACTIVE);
         JobData.saveJob(job);
         System.out.println("Tao cong viec thanh cong!");
         return job;

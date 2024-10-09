@@ -11,6 +11,7 @@ public class Job {
     private int employeeNumber;
     private int salary;
     private Status status;
+    private JobStatus jobStatus;
 
     public enum WorkPlaceType {
         NULL, WFH, OS
@@ -28,7 +29,7 @@ public class Job {
         ACTIVE, INACTIVE
     }
 
-    public Job(int PosterId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status) {
+    public Job(int PosterId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status, JobStatus jobStatus) {
         this.PosterId = PosterId;
         this.id = ++autoId;
         this.placeType = placeType;
@@ -38,6 +39,7 @@ public class Job {
         this.employeeNumber = employeeNumber;
         this.salary = salary;
         this.status = status;
+        this.jobStatus = jobStatus;
     }
 
     public int getPosterId() {
@@ -106,6 +108,14 @@ public class Job {
 
     public Integer getId() {
         return id;
+    }
+
+    public JobStatus getJobStatus() {
+        return jobStatus;
+    }
+
+    public void setJobStatus(JobStatus jobStatus) {
+        this.jobStatus = jobStatus;
     }
 
     public String printDetail() {

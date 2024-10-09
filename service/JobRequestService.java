@@ -14,7 +14,7 @@ public class JobRequestService {
     JobPostService jobPostService;
     Scanner scanner = new Scanner(System.in);
 
-    public JobRequestService(LoginService loginService, JobPostService jobPostService, Job job) {
+    public JobRequestService(LoginService loginService, JobPostService jobPostService) {
         this.loginService = loginService;
         this.jobPostService = jobPostService;
     }

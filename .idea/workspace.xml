@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/service/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/byrole/FinderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/byrole/PosterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/ApproveJobRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/CreatePost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/DeletePost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/FilterPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/ViewJobRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/ViewPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/AdminMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/FinderMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/GuruMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/PosterMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/JobRequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobRequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/JobData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Job.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/JobRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/JobRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/FinderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/JobRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -52,6 +63,13 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="service.intf" />
+      <recent name="view" />
+      <recent name="service" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

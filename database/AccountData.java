@@ -2,7 +2,9 @@ package database;
 
 import entities.Account;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountData {
@@ -13,12 +15,20 @@ public class AccountData {
         accountMap.put(account.getId(), account);
     }
 
+    public static List<Account> getList () {
+        return new ArrayList<>(accountMap.values());
+    }
+
     public static void addAccount (Account a){
         accountMap.put(a.getId(), a);
     }
 
     public static Account getAccountById (int id) {
         return accountMap.get(id);
+    }
+
+    public static void removeAccountById(int id) {
+        accountMap.remove(id);
     }
 
 //    public static Account findAccount (String username, String password) {
