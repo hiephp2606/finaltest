@@ -11,8 +11,15 @@ public class AccountData {
     public static Map<Integer, Account> accountMap = new HashMap<>();
 
     static {
-        Account account = new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", 123, "h", Account.AccountStatus.ACTIVE);
-        accountMap.put(account.getId(), account);
+        Account guru = new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", 123, "h", Account.AccountStatus.ACTIVE);
+        Account admin = new Account("hiep", "123", Account.Role.ADMIN, "Hiep", "26/06/2003", 123, "h", Account.AccountStatus.ACTIVE);
+        Account poster = new Account("duy", "123", Account.Role.POSTER, "Duy", "26/06/2003", 123, "h", Account.AccountStatus.INACTIVE);
+        Account finder = new Account("shit", "123", Account.Role.FINDER, "Shit", "26/06/2003", 123, "h", Account.AccountStatus.INACTIVE);
+
+        accountMap.put(guru.getId(), guru);
+        accountMap.put(admin.getId(), admin);
+        accountMap.put(poster.getId(), poster);
+        accountMap.put(finder.getId(), finder);
     }
 
     public static List<Account> getList () {

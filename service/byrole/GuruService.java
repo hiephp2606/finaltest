@@ -18,6 +18,10 @@ import java.util.Scanner;
 public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
+    List<Account> activeAccount = new ArrayList<>();
+    List<Account> inactiveAccount = new ArrayList<>();
+    List<Job> activeJob = new ArrayList<>();
+    List<Job> inactiveJob = new ArrayList<>();
 
     public GuruService(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
@@ -25,8 +29,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     }
 
     //    Duyet tai khoan
-    public List<Account> listInactiveAccount () {
-        List<Account> inactiveAccount = new ArrayList<>();
+    public void listInactiveAccount () {
         for (Account account : AccountData.getList()) {
                 if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
                         && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
@@ -35,7 +38,6 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 }
         }
 
-        return inactiveAccount;
     }
 
 
@@ -87,48 +89,41 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     }
 
 //    Xoa tai khoan
-    public List listActiveAccount () {
-        List<Account> activeAccount = new ArrayList<>();
+    public void listActiveAccount () {
         for (Account account : AccountData.getList()) {
             if (account.getAccountStatus().equals(Account.AccountStatus.ACTIVE)
                     && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 activeAccount.add(account);
-                System.out.println(account.getId() +". " + account.getUsername() + account.getRole());
+                System.out.println(account.getId() +". " + account.getUsername()+ " - " + account.getRole());
             }
         }
-        return activeAccount;
     }
 
     public void removeAccount () {
-        List<Account> listActivatedAccount = listActiveAccount();
         int chooseId = Ultis.inputId(scanner);
-        for (Account account : listActivatedAccount) {
+        for (Account account : AccountData.getList()) {
             if (chooseId == account.getId() && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 AccountData.removeAccountById(chooseId);
             }
         }
-
     }
 
     //    Duyet cong viec
-    public List listInactiveJob () {
-        List<Job> inActiveJob = new ArrayList<>();
+    public void listInactiveJob () {
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
-                inActiveJob.add(job);
+                inactiveJob.add(job);
                 job.printDetail();
             }
         }
 
-        return inActiveJob;
     }
 
     public void approveJobService () {
-        List<Job> listInactivatedJob = listInactiveJob();
 
         int chooseIdJob = Ultis.inputId(scanner);
 
-        for (Job job : listInactivatedJob) {
+        for (Job job : inactiveJob) {
             if (chooseIdJob == job.getId()) {
                 System.out.print("Nhap lua chon [Duyet/ Tu choi]: ");
                 String choice = scanner.nextLine();
@@ -147,7 +142,6 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     //    Xoa cong viec
     public List<Job> listActiveJob () {
-        List<Job> activeJob = new ArrayList<>();
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
                 activeJob.add(job);
@@ -159,7 +153,6 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     }
 
     public void removeJob () {
-        List<Job> activeJob = listActiveJob();
         int id = Ultis.inputId(scanner);
         for (Job job : activeJob) {
             if (id == job.getId()) {
@@ -171,7 +164,8 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     @Override
     public void approveAccount() {
-        if (listInactiveAccount().size() != 0) {
+        listInactiveAccount();
+        if (!inactiveAccount.isEmpty()) {
             approveAccountService();
         }
         else {
@@ -182,7 +176,8 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     @Override
     public void approveJob() {
-        if (listInactiveJob().size() != 0) {
+        listInactiveJob();
+        if (!inactiveJob.isEmpty()) {
             approveJobService();
         }
         else {
@@ -193,7 +188,8 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     @Override
     public void deletePost() {
-        if (listActiveJob().size() != 0) {
+        listActiveJob();
+        if (!activeJob.isEmpty()) {
             removeJob();
         }
         else {
@@ -205,7 +201,8 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     @Override
     public void deleteAccount() {
-        if (listActiveAccount().size() != 0) {
+        listActiveAccount();
+        if (!activeAccount.isEmpty()) {
             removeAccount();
         }
         else {

@@ -15,6 +15,17 @@ public class Ultis {
         } while (true);
     }
 
+    public static String inputString(Scanner scanner){
+        do {
+            try {
+                String string = scanner.nextLine();
+                return string;
+            } catch (Exception e){
+                System.out.println("Bạn vui lòng nhập day du");
+            }
+        } while (true);
+    }
+
     public static int inputPhoneNumber(Scanner scanner){
         do {
             try {

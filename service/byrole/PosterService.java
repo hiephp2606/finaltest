@@ -7,12 +7,16 @@ import entities.Job;
 import entities.JobRequest;
 import service.LoginService;
 import service.intf.*;
+import ultis.Ultis;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobRequest, ApproveJobRequest {
     LoginService loginService;
     Scanner scanner;
+    List<JobRequest> jobRequests = new ArrayList<>();
 
     public PosterService(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
@@ -21,13 +25,13 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
 
     private Job createJob(Account account) {
         System.out.print("Nhap thong tin co ban cua cong viec cua ban: ");
-        String jobTitle = scanner.nextLine();
+        String jobTitle = Ultis.inputString(scanner);
         System.out.print("Mo ta cong viec: ");
-        String jobDescribe = scanner.nextLine();
+        String jobDescribe = Ultis.inputString(scanner);
         System.out.print("Nhap so luong nhan vien ban muon tuyen: ");
-        int employeeNumber = Integer.parseInt(scanner.nextLine());
+        int employeeNumber = Ultis.inputInteger(scanner);
         System.out.print("Nhap luong cua cong viec theo thang: ");
-        int salary = Integer.parseInt(scanner.nextLine());
+        int salary = Ultis.inputInteger(scanner);
         Job.WorkPlaceType workPlaceType = typeChoice();
         Job.TimeType timeType = timeChoice();
         Job job = new Job(account.getId(), workPlaceType, timeType, jobTitle, jobDescribe, employeeNumber, salary, Job.Status.AVAILABLE, Job.JobStatus.INACTIVE);
@@ -39,7 +43,7 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
     //    typeService
     private Job.WorkPlaceType typeChoice() {
         System.out.print("Chon noi lam viec: \n  1. Lam o nha\n  2. Lam ben ngoai");
-        int choiceWP = Integer.parseInt(scanner.nextLine());
+        int choiceWP = Ultis.inputInteger(scanner);
         switch (choiceWP) {
             case 1:
                 return Job.WorkPlaceType.WFH;
@@ -53,7 +57,7 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
 
     private Job.TimeType timeChoice() {
         System.out.print("Chon tinh chat thoi gian cong viec: \n  1. full time\n  2. part time");
-        int choiceWT = Integer.parseInt(scanner.nextLine());
+        int choiceWT = Ultis.inputInteger(scanner);
         switch (choiceWT) {
             case 1:
                 return Job.TimeType.FT;
@@ -67,7 +71,7 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
 
     public void replyJobRequest () {
         System.out.println("Nhap Id cong viec ban muon duyet: ");
-        int choiceReply = Integer.parseInt(scanner.nextLine());
+        int choiceReply = Ultis.inputInteger(scanner);
         JobRequest jobRequest = JobRequestData.getJobRequestById(choiceReply);
         System.out.println("Hay nhap lua chon:");
         System.out.println("\t 1. Xem CV");
@@ -86,7 +90,7 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
 
     public void approveJobRequest (JobRequest jobRequest) {
         System.out.print("Nhap ket qua duyet [Chap nhan/ Tu choi/ Thoat]: ");
-        String reply = scanner.nextLine();
+        String reply = Ultis.inputString(scanner);
         if (reply.equalsIgnoreCase("Chap nhan")) {
             jobRequest.setStatus(JobRequest.Status.ACCEPT);
         }
@@ -107,20 +111,32 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
 
     @Override
     public void getPost() {
+        int jobNumber = 0;
         for (Job job : JobData.getJobList()) {
             if (loginService.who.getId() == job.getPosterId()) {
-                System.out.print(job.printBrief());
+                jobNumber = jobNumber + 1;
+            }
+        }
+        if (jobNumber == 0) {
+            System.out.println("Ban chua tao cong viec nao gan day");
+        }
+        else {
+            for (Job job : JobData.getJobList()) {
+                if (loginService.who.getId() == job.getPosterId()) {
+                    System.out.print(job.printBrief());
+                }
             }
         }
     }
 
-    @Override
-    public void getJobRequest() {
+//    listJobRequest
+    public void jobRequestsList () {
         for (Job job : JobData.getJobList()) {
             if (job.getPosterId() == loginService.who.getId()) {
                 for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
                     if (jobRequest.getJobId() == job.getId()) {
                         System.out.println(jobRequest.printDetail());
+                        jobRequests.add(jobRequest);
                     }
                 }
             }
@@ -128,16 +144,30 @@ public class PosterService implements CreatePost, ViewPost, DeletePost, ViewJobR
     }
 
     @Override
+    public void getJobRequest() {
+        jobRequestsList();
+    }
+
+    @Override
     public void deletePost() {
-        System.out.print("Nhap Id job can xoa: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        if (JobData.getJobById(id).getPosterId() == loginService.who.getId()) {
-            JobData.removeJob(id);
+        jobRequestsList();
+        if (!jobRequests.isEmpty()) {
+            int id = Ultis.inputId(scanner);
+            if (JobData.getJobById(id).getPosterId() == loginService.who.getId()) {
+                JobData.removeJob(id);
+            }
+        } else {
+            System.out.println("Khong co cong viec nao kha dung");
         }
     }
 
     @Override
     public void approveJobRequest() {
-        replyJobRequest();
+        jobRequestsList();
+        if (!jobRequests.isEmpty()) {
+            replyJobRequest();
+        } else {
+            System.out.println("Khong co cong viec nao kha dung");
+        }
     }
 }

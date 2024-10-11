@@ -8,6 +8,7 @@ import entities.JobRequest;
 import service.JobService;
 import service.LoginService;
 import service.intf.*;
+import ultis.Ultis;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,9 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
     List<Job> displayedList = new ArrayList<>();
     JobService jobService = new JobService();
     Scanner scanner;
+    List<JobRequest> lJobRequestFinder = new ArrayList<>();
+    List<JobRequest> lAcceptedJobRequest = new ArrayList<>();
+    List<JobRequest> lRejectedJobRequest = new ArrayList<>();
 
     public FinderService(LoginService loginService, List<Job> displayedList, JobService jobService, Scanner scanner) {
         this.loginService = loginService;
@@ -28,8 +32,13 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
 
 //    listJob
     public void listJob () {
-        for (Job job : JobData.getJobList()) {
-            System.out.print(job.printBrief());
+        if (JobData.getJobList().size() == 0) {
+            System.out.println("Chua co cong viec nao");
+        }
+        else {
+            for (Job job : JobData.getJobList()) {
+                System.out.print(job.printBrief());
+            }
         }
     }
 
@@ -37,7 +46,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
 //    Dang ky cong viec
     public void applyJobService () {
         System.out.print("Nhap cong viec ban muon dang ky: ");
-        int jobSelect = Integer.parseInt(scanner.nextLine());
+        int jobSelect = Ultis.inputInteger(scanner);
         JobRequest jobRequest = new JobRequest(loginService.who.getId(), jobSelect, JobRequest.Status.PENDING, "null");
         JobRequestData.saveJobRequest(jobRequest);
         System.out.println("Yeu cau cua ban dang duoc duyet");
@@ -47,6 +56,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
     public void listJobRequestFinder () {
         for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
             if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.PENDING)) {
+                lJobRequestFinder.add(jobRequest);
                 System.out.println(jobRequest.printBrief());
             }
         }
@@ -61,6 +71,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
     }
 
     public void listRejectedJobRequest () {
+
         for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
             if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.REJECT)) {
                 System.out.println(jobRequest.printBrief());
@@ -70,23 +81,26 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
 
 //    Huy dang ky cong viec
     public void deleteAppliedJob () {
-        listJobRequestFinder();
-        System.out.print("Nhap cong id cong viec ban muon xoa: ");
-        int choiceDelete = Integer.parseInt(scanner.nextLine());
-        listJobRequestFinder();
+        if (lJobRequestFinder.isEmpty()) {
+            System.out.println("khong co cong viec nao kha dung");
+        } else {
+            listJobRequestFinder();
+            System.out.print("Nhap cong id cong viec ban muon xoa: ");
+            int choiceDelete = Ultis.inputInteger(scanner);
+            listJobRequestFinder();
 
-        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
-            if (jobRequest.getId() == choiceDelete) {
-                JobRequestData.removeJobRequest(jobRequest);
+            for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+                if (jobRequest.getId() == choiceDelete) {
+                    JobRequestData.removeJobRequest(jobRequest);
+                }
             }
         }
-
     }
 
 //    findFilter
     public void findJob () {
         System.out.print("Nhap cong viec ban muon tim: ");
-        String jobNeedle = scanner.nextLine();
+        String jobNeedle = Ultis.inputString(scanner);
         for (Job job : JobData.getJobList()) {
             if (job.getJobTitle().contains(jobNeedle)) {
                 displayedList.add(job);
@@ -99,7 +113,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
         System.out.println("Loc theo noi lam viec:");
         System.out.println("\t1. Lam o nha");
         System.out.println("\t2. Lam tai tru so");
-        int WPchoice = Integer.parseInt(scanner.nextLine());
+        int WPchoice = Ultis.inputInteger(scanner);
 
         List<Job> current = new ArrayList<>(displayedList); // copy displayedJob
         displayedList.clear();
@@ -115,7 +129,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
         System.out.println("Loc theo thoi gian lam viec:");
         System.out.println("\t1. Full time");
         System.out.println("\t2. Part time");
-        int WTchoice = Integer.parseInt(scanner.nextLine());
+        int WTchoice = Ultis.inputInteger(scanner);
 
         List<Job> current = new ArrayList<>(displayedList); // copy displayedJob
         displayedList.clear();
@@ -130,9 +144,9 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
     public void filterSalary () {
         System.out.println("Loc theo muc luong:");
         System.out.print("\tMuc luong toi thieu: ");
-        int minSalary = Integer.parseInt(scanner.nextLine());
+        int minSalary = Ultis.inputInteger(scanner);
         System.out.print("\tMuc luong toi da: ");
-        int maxSalary = Integer.parseInt(scanner.nextLine());
+        int maxSalary = Ultis.inputInteger(scanner);
 
         List<Job> current = new ArrayList<>(displayedList); // copy displayedJob
         displayedList.clear();
@@ -153,7 +167,7 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
 //    selectJob
     public void selectJob () {
         System.out.print("Nhap cong viec ban muon xem: ");
-        int choice = Integer.parseInt(scanner.nextLine());
+        int choice = Ultis.inputInteger(scanner);
         Job job = displayedList.get(choice);
         System.out.println(job.printDetail());
     }
@@ -191,22 +205,36 @@ public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobReq
 
     @Override
     public void applyJob() {
-        applyJobService();
+        if (JobData.getJobList().size() == 0) {
+            System.out.println("Chua co cong viec de dang ky");
+        }
+        else {
+            applyJobService();
+        }
     }
 
     @Override
     public void getJobRequest() {
         listJobRequestFinder();
+        if (lJobRequestFinder.isEmpty()) {
+            System.out.println("Ban chua dang ky them cong viec nao");
+        }
     }
 
     @Override
     public void acceptedJob() {
         listAcceptedJobRequest();
+        if (lAcceptedJobRequest.isEmpty()) {
+            System.out.println("Ban chua co them thong bao cong viec nao");
+        }
     }
 
     @Override
     public void rejectedJob() {
         listRejectedJobRequest();
+        if(lRejectedJobRequest.isEmpty()) {
+            System.out.println("Chua co cong viec nao de hien thi");
+        }
     }
 
     @Override

@@ -20,7 +20,7 @@ public class PosterMenu {
     }
 
     void mainMenu() {
-        System.out.println("===========Chao mung " + loginService.who.getUsername() + " ===========");
+        System.out.println("===========Chao mung " + loginService.who.getUsername() + "===========");
         System.out.println("1. Xem cong viec da tao");
         System.out.println("2. Xem don ung tuyen");
         System.out.println("3. Them cong viec");
