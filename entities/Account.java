@@ -8,11 +8,11 @@ public class Account {
     private Role role;
     private String name;
     private String dateOfBirth;
-    private String phoneNumber;
+    private int phoneNumber;
     private String email;
     private AccountStatus accountStatus;
 
-    public Account(String username, String password, Role role, String name, String dateOfBirth, String phoneNumber, String email, AccountStatus accountStatus) {
+    public Account(String username, String password, Role role, String name, String dateOfBirth, int phoneNumber, String email, AccountStatus accountStatus) {
         this.id = ++autoId;
         this.username = username;
         this.password = password;
@@ -87,11 +87,11 @@ public class Account {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

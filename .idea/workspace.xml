@@ -5,41 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/service/byrole/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/byrole/GuruService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/ApplyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/ApproveAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/ApproveJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/DeleteAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/DeleteJobRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/ViewAcceptedJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/intf/ViewRejectedJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ultis/Ultis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/JobRequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobRequestData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Job.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/JobData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/JobData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/RequestData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account$Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account$Role.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Job$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Job$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Job$TimeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Job$TimeType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Job$WorkPlaceType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Job$WorkPlaceType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Job.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Job.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/IAccountAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/JobService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/JobService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/LoginService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/RegisterService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/JobRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/JobRequestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/byrole/FinderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/FinderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/FinderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/FinderMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/GuruMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/GuruMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/PosterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/PosterMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Hoang Hiep/Desktop/btvn-master",
+    "last_opened_file_path": "D:/code_di_hoc/code/JAVA/code_di_hoc/finaltest",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",

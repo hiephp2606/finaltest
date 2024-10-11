@@ -8,6 +8,7 @@ import service.byrole.AdminService;
 import service.byrole.FinderService;
 import service.byrole.GuruService;
 import service.byrole.PosterService;
+import ultis.Ultis;
 
 import java.util.Scanner;
 
@@ -33,38 +34,40 @@ public class Menu {
         boolean loop = true;
         while (loop == true) {
             beginMenuDisplay();
-            System.out.printf("Nhap lua chon cua ban: ");
-            int choice1 = Integer.parseInt(scanner.nextLine());
+            int choice1 = Ultis.inputInteger(scanner);
             switch (choice1) {
                 case 1:
-                        loginService.accountLogin(scanner);
-                        if (loginService.who.getRole().equals(Account.Role.FINDER)) {
-                            finderMenuService();
-                        }
+                    do {
+                        try {
+                            loginService.accountLogin(scanner);
+                            if (loginService.who.getRole().equals(Account.Role.FINDER)) {
+                                finderMenuService();
+                            }
 
-                        if (loginService.who.getRole().equals(Account.Role.POSTER)) {
-                            posterMenuService();
-                        }
+                            if (loginService.who.getRole().equals(Account.Role.POSTER)) {
+                                posterMenuService();
+                            }
 
-                        if (loginService.who.getRole().equals(Account.Role.ADMIN)) {
-                            adminMenuService();
-                        }
+                            if (loginService.who.getRole().equals(Account.Role.ADMIN)) {
+                                adminMenuService();
+                            }
 
-                        if (loginService.who.getRole().equals(Account.Role.GURU)) {
-                            guruMenuService();
-                        }
-
-                        if (loginService.who == null) {
+                            if (loginService.who.getRole().equals(Account.Role.GURU)) {
+                                guruMenuService();
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Tai khoan nay khong ton tai hoac da bi tu choi duyet!");
                             break;
                         }
+                    } while (true);
+
                     break;
                 case 2:
                     System.out.println("Chon quyen dang nhap");
                     System.out.println("\t1. Nguoi tim viec");
                     System.out.println("\t2. Nguoi giao viec");
                     System.out.println("\t3. Admin");
-                    System.out.print("Nhap lua chon cua ban: ");
-                    int choice2 = Integer.parseInt(scanner.nextLine());
+                    int choice2 = Ultis.inputInteger(scanner);
                     switch (choice2) {
                         case 1:
                             registerService.createFinderAccount(scanner);

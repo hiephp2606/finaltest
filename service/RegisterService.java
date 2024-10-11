@@ -2,23 +2,55 @@ package service;
 
 import database.AccountData;
 import entities.Account;
+import ultis.Ultis;
 
 import java.util.Scanner;
 
 public class RegisterService {
     public Account createAccount(Scanner scanner) {
-        System.out.print("Username: ");
-        String userName = scanner.nextLine();
+        String userName = "1";
+        do {
+            System.out.print("Username: ");
+            String userNameCheckType = scanner.nextLine();
+            if (userNameCheckType == null) {
+                userName = userNameCheckType;
+                break;
+            }
+            else if (userNameCheckType != null){
+                System.out.println("Username nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+            }
+        } while (true);
+
         System.out.print("Password: ");
         String password = scanner.nextLine();
         System.out.print("Nhap ho va ten: ");
         String name = scanner.nextLine();
         System.out.print("Nhap ngay thang nam sinh: ");
         String dateOfBirth = scanner.nextLine();
-        System.out.print("Nhap so dien thoai: ");
-        String phoneNumber = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
+        int phoneNumber = 0;
+        do {
+            Integer phoneNumberCheckType = Ultis.inputPhoneNumber(scanner);
+            if (phoneNumberCheckType == null) {
+                phoneNumber = phoneNumberCheckType;
+                break;
+            }
+            else {
+                System.out.println("So dien thoai nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+            }
+        } while (true);
+
+        String email = "1";
+        do {
+            System.out.print("Email: ");
+            String emailCheckType = scanner.nextLine();
+            if (emailCheckType == null) {
+                email = emailCheckType;
+                break;
+            }
+            else {
+                System.out.println("email nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+            }
+        } while (true);
 
         return new Account(userName, password, Account.Role.GUEST, name, dateOfBirth, phoneNumber, email, Account.AccountStatus.INACTIVE);
     }
@@ -46,4 +78,37 @@ public class RegisterService {
         AccountData.addAccount(account);
         System.out.println("Tai khoan cua ban dang duoc doi ngu admin duyet, ket qua se duoc bao ve email");
     }
+
+//    checkService
+    public String checkUsername (String userName) {
+        for (Account account : AccountData.getList()) {
+            if (userName.equals(account.getUsername())) {
+                return userName;
+            }
+        }
+
+        return null;
+    }
+
+    public String checkEmail (String email) {
+        for (Account account : AccountData.getList()) {
+            if (email.equals(account.getEmail())) {
+                return email;
+            }
+        }
+
+        return null;
+    }
+
+    public Integer checkPhoneNumber (Integer phoneNumber) {
+        for (Account account : AccountData.getList()) {
+            if (phoneNumber.equals(account.getPhoneNumber())) {
+                return phoneNumber;
+            }
+        }
+
+        return null;
+    }
+
+
 }

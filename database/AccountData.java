@@ -11,7 +11,7 @@ public class AccountData {
     public static Map<Integer, Account> accountMap = new HashMap<>();
 
     static {
-        Account account = new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", "123", "h", Account.AccountStatus.ACTIVE);
+        Account account = new Account("guru", "123", Account.Role.GURU, "Hiep", "26/06/2003", 123, "h", Account.AccountStatus.ACTIVE);
         accountMap.put(account.getId(), account);
     }
 
