@@ -17,54 +17,15 @@ import java.util.Scanner;
 public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
-    List<Account> inactiveAccount = new ArrayList<>();
-    List<Account> activeAccount = new ArrayList<>();
-    List<Job> inActiveJob = new ArrayList<>();
-    List<Job> activeJob = new ArrayList<>();
 
-    public GuruService(LoginService loginService, Scanner scanner, List<Account> inactiveAccount, List<Account> activeAccount, List<Job> inActiveJob, List<Job> activeJob) {
+    public GuruService(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
         this.scanner = scanner;
-        this.inactiveAccount = inactiveAccount;
-        this.activeAccount = activeAccount;
-        this.inActiveJob = inActiveJob;
-        this.activeJob = activeJob;
-    }
-
-    public List<Account> getInactiveAccount() {
-        return inactiveAccount;
-    }
-
-    public void setInactiveAccount(List<Account> inactiveAccount) {
-        this.inactiveAccount = inactiveAccount;
-    }
-
-    public List<Account> getActiveAccount() {
-        return activeAccount;
-    }
-
-    public void setActiveAccount(List<Account> activeAccount) {
-        this.activeAccount = activeAccount;
-    }
-
-    public List<Job> getInActiveJob() {
-        return inActiveJob;
-    }
-
-    public void setInActiveJob(List<Job> inActiveJob) {
-        this.inActiveJob = inActiveJob;
-    }
-
-    public List<Job> getActiveJob() {
-        return activeJob;
-    }
-
-    public void setActiveJob(List<Job> activeJob) {
-        this.activeJob = activeJob;
     }
 
     //    Duyet tai khoan
     public void listInactiveAccount () {
+        List<Account> inactiveAccount = new ArrayList<>();
         for (Account account : AccountData.getList()) {
             if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
                     && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
@@ -109,8 +70,9 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 break;
         }
     }
-//    Xoa tai khoan
-    public void listActiveAccount () {
+    //    Xoa tai khoan
+    public List listActiveAccount () {
+        List<Account> activeAccount = new ArrayList<>();
         for (Account account : AccountData.getList()) {
             if (account.getAccountStatus().equals(Account.AccountStatus.ACTIVE)
                     && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
@@ -118,11 +80,13 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 System.out.println(account.getId() +". " + account.getUsername() + account.getRole());
             }
         }
+        return activeAccount;
     }
     public void removeAccount () {
+        List<Account> listActivatedAccount = listActiveAccount();
         System.out.print("Nhap id tai khoan ban muon xoa: ");
         int chooseId = Integer.parseInt(scanner.nextLine());
-        for (Account account : activeAccount) {
+        for (Account account : listActivatedAccount) {
             if (chooseId == account.getId() && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 AccountData.removeAccountById(chooseId);
             }
@@ -130,21 +94,25 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     }
 
-//    Duyet cong viec
-    public void listInactiveJob () {
+    //    Duyet cong viec
+    public List listInactiveJob () {
+        List<Job> inActiveJob = new ArrayList<>();
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
                 inActiveJob.add(job);
                 job.printDetail();
             }
         }
+
+        return inActiveJob;
     }
 
     public void approveJobService () {
+        List<Job> listInactivatedJob = listInactiveJob();
         System.out.print("Nhap id cong viec ban muon duyet");
         int chooseIdJob = Integer.parseInt(scanner.nextLine());
 
-        for (Job job : inActiveJob) {
+        for (Job job : listInactivatedJob) {
             if (chooseIdJob == job.getId()) {
                 System.out.print("Nhap lua chon [Duyet/ Tu choi]: ");
                 String choice = scanner.nextLine();
@@ -158,8 +126,9 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
         }
     }
 
-//    Xoa cong viec
+    //    Xoa cong viec
     public void removeJob () {
+        List<Job> activeJob = new ArrayList<>();
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.ACTIVE)) {
                 job.printDetail();

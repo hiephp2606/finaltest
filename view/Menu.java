@@ -20,12 +20,12 @@ public class Menu {
     JobService jobService = new JobService();
     FinderService finderService;
     PosterService posterService;
-    AdminService adminService;
+    AdminService adminService ;
     GuruService guruService;
     FinderMenu finderMenu = new FinderMenu(loginService, JobData.getJobList(), jobService, scanner);
     PosterMenu posterMenu = new PosterMenu(loginService, scanner);
-    AdminMenu adminMenu = new AdminMenu(loginService, scanner, adminService.getInactiveAccount(), adminService.getActiveAccount(), adminService.getInActiveJob(), adminService.getActiveJob());
-    GuruMenu guruMenu = new GuruMenu(loginService, scanner, guruService.getInactiveAccount(), guruService.getActiveAccount(), guruService.getInActiveJob(), guruService.getActiveJob());
+    AdminMenu adminMenu = new AdminMenu(loginService, scanner);
+    GuruMenu guruMenu = new GuruMenu(loginService, scanner);
 
     public void beginMenuDisplay () {
         System.out.println("===========TechMaster Work===========");

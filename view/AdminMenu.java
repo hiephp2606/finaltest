@@ -12,21 +12,11 @@ import java.util.Scanner;
 public class AdminMenu {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
-    List<Account> inactiveAccount = new ArrayList<>();
-    List<Account> activeAccount = new ArrayList<>();
-    List<Job> inActiveJob = new ArrayList<>();
-    List<Job> activeJob = new ArrayList<>();
 
-    public AdminMenu(LoginService loginService, Scanner scanner, List<Account> inactiveAccount, List<Account> activeAccount, List<Job> inActiveJob, List<Job> activeJob) {
+    public AdminMenu(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
         this.scanner = scanner;
-        this.inactiveAccount = inactiveAccount;
-        this.activeAccount = activeAccount;
-        this.inActiveJob = inActiveJob;
-        this.activeJob = activeJob;
     }
-
-
 
     void mainMenu () {
         System.out.println("\t1. Duyet tai khoan ");
@@ -36,19 +26,19 @@ public class AdminMenu {
     }
 
     void approveAccount () {
-        new AdminService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).approveAccount();
+        new AdminService(loginService, scanner).approveAccount();
     }
 
     void approveJob () {
-            new AdminService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).approveJob();
+            new AdminService(loginService, scanner).approveJob();
     }
 
     void removeJob () {
-            new AdminService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).removeJob();
+            new AdminService(loginService, scanner).removeJob();
     }
 
     void removeAccount () {
-            new AdminService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).removeAccount();
+            new AdminService(loginService, scanner).removeAccount();
     }
 
 }

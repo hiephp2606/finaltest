@@ -12,18 +12,10 @@ import java.util.Scanner;
 public class GuruMenu {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
-    List<Account> inactiveAccount = new ArrayList<>();
-    List<Account> activeAccount = new ArrayList<>();
-    List<Job> inActiveJob = new ArrayList<>();
-    List<Job> activeJob = new ArrayList<>();
 
-    public GuruMenu(LoginService loginService, Scanner scanner, List<Account> inactiveAccount, List<Account> activeAccount, List<Job> inActiveJob, List<Job> activeJob) {
+    public GuruMenu(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
         this.scanner = scanner;
-        this.inactiveAccount = inactiveAccount;
-        this.activeAccount = activeAccount;
-        this.inActiveJob = inActiveJob;
-        this.activeJob = activeJob;
     }
 
     void mainMenu () {
@@ -34,19 +26,19 @@ public class GuruMenu {
     }
 
     void approveAccount () {
-        new GuruService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).approveAccount();
+        new GuruService(loginService, scanner).approveAccount();
     }
 
     void approveJob () {
-            new GuruService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).approveJob();
+            new GuruService(loginService, scanner).approveJob();
     }
 
     void removeJob () {
-            new GuruService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).removeJob();
+            new GuruService(loginService, scanner).removeJob();
     }
 
     void removeAccount () {
-            new GuruService(loginService, scanner, inactiveAccount, activeAccount, inActiveJob, activeJob).removeAccount();
+            new GuruService(loginService, scanner).removeAccount();
     }
 
 }
