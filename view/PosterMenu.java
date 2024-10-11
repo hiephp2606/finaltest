@@ -27,16 +27,16 @@ public class PosterMenu {
         System.out.println("5. Phe duyet don");
     }
 
-    void createJob() {
-        new PosterService(loginService, scanner).createPost();
-    }
-
     void viewJob() {
         new PosterService(loginService, scanner).getPost();
     }
 
     void viewApplicant() {
         new PosterService(loginService, scanner).getJobRequest();
+    }
+
+    void createJob() {
+        new PosterService(loginService, scanner).createPost();
     }
 
     void deleteJob() {

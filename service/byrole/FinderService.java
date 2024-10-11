@@ -1,23 +1,29 @@
 package service.byrole;
 
 import database.JobData;
+import database.JobRequestData;
 import entities.Account;
 import entities.Job;
+import entities.JobRequest;
 import service.JobService;
-import service.intf.FilterPost;
-import service.intf.ViewPost;
+import service.LoginService;
+import service.intf.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FinderService implements ViewPost, FilterPost {
+public class FinderService implements ViewPost, FilterPost, ApplyJob, ViewJobRequest, ViewAcceptedJob, ViewRejectedJob, DeleteJobRequest {
+    LoginService loginService;
     List<Job> displayedList = new ArrayList<>();
     JobService jobService = new JobService();
     Scanner scanner;
-//    Tao post
-    public void createPost (Account account, Scanner scanner) {
-        jobService.createJob(account, scanner);
+
+    public FinderService(LoginService loginService, List<Job> displayedList, JobService jobService, Scanner scanner) {
+        this.loginService = loginService;
+        this.displayedList = displayedList;
+        this.jobService = jobService;
+        this.scanner = scanner;
     }
 
 //    listJob
@@ -25,6 +31,56 @@ public class FinderService implements ViewPost, FilterPost {
         for (Job job : JobData.getJobList()) {
             System.out.print(job.printBrief());
         }
+    }
+
+
+//    Dang ky cong viec
+    public void applyJobService () {
+        System.out.print("Nhap cong viec ban muon dang ky: ");
+        int jobSelect = Integer.parseInt(scanner.nextLine());
+        JobRequest jobRequest = new JobRequest(loginService.who.getId(), jobSelect, JobRequest.Status.PENDING, "null");
+        JobRequestData.saveJobRequest(jobRequest);
+        System.out.println("Yeu cau cua ban dang duoc duyet");
+    }
+
+//    Xem cong viec da dang ky
+    public void listJobRequestFinder () {
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.PENDING)) {
+                System.out.println(jobRequest.printBrief());
+            }
+        }
+    }
+
+    public void listAcceptedJobRequest () {
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.ACCEPT)) {
+                System.out.println(jobRequest.printBrief());
+            }
+        }
+    }
+
+    public void listRejectedJobRequest () {
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.REJECT)) {
+                System.out.println(jobRequest.printBrief());
+            }
+        }
+    }
+
+//    Huy dang ky cong viec
+    public void deleteAppliedJob () {
+        listJobRequestFinder();
+        System.out.print("Nhap cong id cong viec ban muon xoa: ");
+        int choiceDelete = Integer.parseInt(scanner.nextLine());
+        listJobRequestFinder();
+
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+            if (jobRequest.getId() == choiceDelete) {
+                JobRequestData.removeJobRequest(jobRequest);
+            }
+        }
+
     }
 
 //    findFilter
@@ -116,16 +172,45 @@ public class FinderService implements ViewPost, FilterPost {
 
     @Override
     public void filterBySalary() {
+        printFilteredJob();
         filterByTitle();
     }
 
     @Override
     public void filterByWorkPlace() {
-
+        printFilteredJob();
+        filterJobByWorkplace();
     }
 
     @Override
     public void filterByWorkTime() {
+        printFilteredJob();
+        filterJobByWorkTime();
+    }
 
+
+    @Override
+    public void applyJob() {
+        applyJobService();
+    }
+
+    @Override
+    public void getJobRequest() {
+        listJobRequestFinder();
+    }
+
+    @Override
+    public void acceptedJob() {
+        listAcceptedJobRequest();
+    }
+
+    @Override
+    public void rejectedJob() {
+        listRejectedJobRequest();
+    }
+
+    @Override
+    public void removeJobRequest() {
+        deleteAppliedJob();
     }
 }

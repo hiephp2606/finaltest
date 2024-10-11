@@ -23,6 +23,10 @@ public class JobRequestData {
         return jobRequestMap.get(id);
     }
 
+    public static JobRequest removeJobRequest (JobRequest jobRequest) {
+        return jobRequestMap.get(jobRequest.getId());
+    }
+
     public static String getCVById (int id) {
         return jobRequestMap.get(id).getCV();
     }

@@ -26,7 +26,7 @@ public class Job {
     }
 
     public enum JobStatus {
-        ACTIVE, INACTIVE
+        ACTIVE, INACTIVE, DECLINE
     }
 
     public Job(int PosterId ,WorkPlaceType placeType, TimeType timeType, String jobTitle, String jobDescribe, int employeeNumber, int salary, Status status, JobStatus jobStatus) {

@@ -30,8 +30,23 @@ public class JobRequestService {
     }
 
     public void listJobRequestFinder () {
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList() ) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.PENDING)) {
+                System.out.println(jobRequest.printBrief());
+            }
+        }
+    }
+    public void listAcceptedJobRequest () {
         for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
-            if (jobRequest.getFinderId() == loginService.who.getId()) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.ACCEPT)) {
+                System.out.println(jobRequest.printBrief());
+            }
+        }
+    }
+
+    public void listRejectedJobRequest () {
+        for (JobRequest jobRequest : JobRequestData.getJobRequestList()) {
+            if (jobRequest.getFinderId() == loginService.who.getId() && jobRequest.getStatus().equals(JobRequest.Status.REJECT)) {
                 System.out.println(jobRequest.printBrief());
             }
         }
