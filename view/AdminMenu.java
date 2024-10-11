@@ -26,6 +26,8 @@ public class AdminMenu {
         this.activeJob = activeJob;
     }
 
+
+
     void mainMenu () {
         System.out.println("\t1. Duyet tai khoan ");
         System.out.println("\t2. Duyet cong viec ");

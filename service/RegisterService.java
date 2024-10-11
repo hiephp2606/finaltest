@@ -13,11 +13,11 @@ public class RegisterService {
             System.out.print("Username: ");
             String userNameCheckType = scanner.nextLine();
             if (userNameCheckType == null) {
+                System.out.println("Username nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+            }
+            else {
                 userName = userNameCheckType;
                 break;
-            }
-            else if (userNameCheckType != null){
-                System.out.println("Username nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
             }
         } while (true);
 
@@ -31,11 +31,11 @@ public class RegisterService {
         do {
             Integer phoneNumberCheckType = Ultis.inputPhoneNumber(scanner);
             if (phoneNumberCheckType == null) {
-                phoneNumber = phoneNumberCheckType;
-                break;
+                System.out.println("So dien thoai nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
             }
             else {
-                System.out.println("So dien thoai nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+                phoneNumber = phoneNumberCheckType;
+                break;
             }
         } while (true);
 
@@ -44,11 +44,11 @@ public class RegisterService {
             System.out.print("Email: ");
             String emailCheckType = scanner.nextLine();
             if (emailCheckType == null) {
-                email = emailCheckType;
-                break;
+                System.out.println("email nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
             }
             else {
-                System.out.println("email nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
+                email = emailCheckType;
+                break;
             }
         } while (true);
 
@@ -83,31 +83,31 @@ public class RegisterService {
     public String checkUsername (String userName) {
         for (Account account : AccountData.getList()) {
             if (userName.equals(account.getUsername())) {
-                return userName;
+                return null;
             }
         }
 
-        return null;
+        return userName;
     }
 
     public String checkEmail (String email) {
         for (Account account : AccountData.getList()) {
             if (email.equals(account.getEmail())) {
-                return email;
+                return null;
             }
         }
 
-        return null;
+        return email;
     }
 
     public Integer checkPhoneNumber (Integer phoneNumber) {
         for (Account account : AccountData.getList()) {
             if (phoneNumber.equals(account.getPhoneNumber())) {
-                return phoneNumber;
+                return null;
             }
         }
 
-        return null;
+        return phoneNumber;
     }
 
 

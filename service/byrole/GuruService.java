@@ -31,6 +31,38 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
         this.activeJob = activeJob;
     }
 
+    public List<Account> getInactiveAccount() {
+        return inactiveAccount;
+    }
+
+    public void setInactiveAccount(List<Account> inactiveAccount) {
+        this.inactiveAccount = inactiveAccount;
+    }
+
+    public List<Account> getActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setActiveAccount(List<Account> activeAccount) {
+        this.activeAccount = activeAccount;
+    }
+
+    public List<Job> getInActiveJob() {
+        return inActiveJob;
+    }
+
+    public void setInActiveJob(List<Job> inActiveJob) {
+        this.inActiveJob = inActiveJob;
+    }
+
+    public List<Job> getActiveJob() {
+        return activeJob;
+    }
+
+    public void setActiveJob(List<Job> activeJob) {
+        this.activeJob = activeJob;
+    }
+
     //    Duyet tai khoan
     public void listInactiveAccount () {
         for (Account account : AccountData.getList()) {

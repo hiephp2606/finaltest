@@ -1,5 +1,6 @@
 package view;
 
+import database.JobData;
 import entities.Account;
 import service.JobService;
 import service.LoginService;
@@ -13,17 +14,18 @@ import ultis.Ultis;
 import java.util.Scanner;
 
 public class Menu {
+    Scanner scanner = new Scanner(System.in);
     LoginService loginService = new LoginService();
     RegisterService registerService = new RegisterService();
+    JobService jobService = new JobService();
     FinderService finderService;
     PosterService posterService;
     AdminService adminService;
     GuruService guruService;
-    FinderMenu finderMenu;
-    PosterMenu posterMenu;
-    AdminMenu adminMenu;
-    GuruMenu guruMenu;
-    Scanner scanner = new Scanner(System.in);
+    FinderMenu finderMenu = new FinderMenu(loginService, JobData.getJobList(), jobService, scanner);
+    PosterMenu posterMenu = new PosterMenu(loginService, scanner);
+    AdminMenu adminMenu = new AdminMenu(loginService, scanner, adminService.getInactiveAccount(), adminService.getActiveAccount(), adminService.getInActiveJob(), adminService.getActiveJob());
+    GuruMenu guruMenu = new GuruMenu(loginService, scanner, guruService.getInactiveAccount(), guruService.getActiveAccount(), guruService.getInActiveJob(), guruService.getActiveJob());
 
     public void beginMenuDisplay () {
         System.out.println("===========TechMaster Work===========");
@@ -44,15 +46,15 @@ public class Menu {
                                 finderMenuService();
                             }
 
-                            if (loginService.who.getRole().equals(Account.Role.POSTER)) {
+                            else if (loginService.who.getRole().equals(Account.Role.POSTER)) {
                                 posterMenuService();
                             }
 
-                            if (loginService.who.getRole().equals(Account.Role.ADMIN)) {
+                            else if (loginService.who.getRole().equals(Account.Role.ADMIN)) {
                                 adminMenuService();
                             }
 
-                            if (loginService.who.getRole().equals(Account.Role.GURU)) {
+                            else if (loginService.who.getRole().equals(Account.Role.GURU)) {
                                 guruMenuService();
                             }
                         } catch (Exception e) {

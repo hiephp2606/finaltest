@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ultis/Ultis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/LoginService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/RegisterService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
