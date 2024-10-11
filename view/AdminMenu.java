@@ -36,7 +36,7 @@ public class AdminMenu {
     }
 
     void removeJob () {
-            new AdminService(loginService, scanner).removeJob();
+            new AdminService(loginService, scanner).deletePost();
     }
 
     void removeAccount () {

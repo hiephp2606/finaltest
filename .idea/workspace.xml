@@ -9,15 +9,13 @@
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/AdminService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/GuruService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/GuruService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/AdminMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/AdminMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/FinderMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/FinderMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/GuruMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/GuruMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/PosterMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/PosterMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/GuruService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/GuruService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ultis/Ultis.java" beforeDir="false" afterPath="$PROJECT_DIR$/ultis/Ultis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/FinderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/FinderMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/GuruMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/GuruMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/PosterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/PosterMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

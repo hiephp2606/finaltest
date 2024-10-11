@@ -27,4 +27,16 @@ public class Ultis {
         } while (true);
     }
 
+    public static int inputId(Scanner scanner){
+        do {
+            try {
+                System.out.print("Nhap id: ");
+                int n = Integer.parseInt(scanner.nextLine());
+                return n;
+            } catch (Exception e){
+                System.out.println("Chi duoc nhap so dien thoai");
+            }
+        } while (true);
+    }
+
 }

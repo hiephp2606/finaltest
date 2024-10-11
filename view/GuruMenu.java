@@ -23,6 +23,7 @@ public class GuruMenu {
         System.out.println("\t1. Duyet tai khoan ");
         System.out.println("\t2. Duyet cong viec ");
         System.out.println("\t3. Xoa cong viec ");
+        System.out.println("\t4. Xoa tai khoan ");
         System.out.println("\t5. Dang xuat");
 
     }
@@ -36,11 +37,11 @@ public class GuruMenu {
     }
 
     void removeJob () {
-            new GuruService(loginService, scanner).removeJob();
+            new GuruService(loginService, scanner).deletePost();
     }
 
     void removeAccount () {
-            new GuruService(loginService, scanner).removeAccount();
+            new GuruService(loginService, scanner).deleteAccount();
     }
 
 }
