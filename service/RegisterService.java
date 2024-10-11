@@ -2,70 +2,31 @@ package service;
 
 import database.AccountData;
 import entities.Account;
-import ultis.Ultis;
+import utils.InputUtils;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class RegisterService {
     public Account createAccount(Scanner scanner) {
-        String userName = "1";
+        String userName;
         do {
-            System.out.print("Username: ");
-            String userNameCheckType = scanner.nextLine();
-            if (checkUsername(userNameCheckType) == null) {
-                userName = userNameCheckType;
-                break;
-            }
-            else {
-                System.out.println("Username nay da duoc su dung hoac dang duoc dang ky, vui long chon username khac!");
-            }
-        } while (true);
+            userName = InputUtils.loopInputString("Username: ", scanner);
+        } while (checkUsername(userName) != null);
 
         System.out.print("Password: ");
         String password = scanner.nextLine();
-        System.out.print("Nhap ho va ten: ");
-        String name = scanner.nextLine();
+        String name = InputUtils.loopInputString("Nhap ho va ten: ", scanner);
+        String dateOfBirth = InputUtils.loopInputDate("Nhap ngay/thang/nam sinh: ", scanner);
 
-        String dateOfBirth;
+        int phoneNumber;
         do {
-            try {
-                System.out.print("Nhap ngay thang nam sinh: ");
-                dateOfBirth = scanner.nextLine();
-                LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                break;
-            } catch (Exception e) {
-                System.out.println("Ngay sinh khong hop le, vui long nhap lai");
-            }
-        } while (true);
+            phoneNumber = InputUtils.loopInputPhoneNumber("Nhap so dien thoai: ", scanner);
+        } while (checkPhoneNumber(phoneNumber) != null);
 
-        int phoneNumber = 0;
+        String email;
         do {
-            Integer phoneNumberCheckType = Ultis.inputPhoneNumber(scanner);
-            if (checkPhoneNumber(phoneNumberCheckType) == null) {
-                phoneNumber = phoneNumberCheckType;
-                break;
-            }
-            else {
-                System.out.println("So dien thoai nay da duoc su dung hoac dang duoc dang ky, vui long chon so dien thoai khac!");
-            }
-        } while (true);
-
-        String email = "1";
-        do {
-            System.out.print("Email: ");
-            String emailCheckType = scanner.nextLine();
-            if (checkEmail(emailCheckType) == null) {
-                email = emailCheckType;
-                break;
-            }
-            else {
-                System.out.println("email nay da duoc su dung hoac dang duoc dang ky, vui long chon email khac!");
-            }
-        } while (true);
-
+            email = InputUtils.loopInputEmail("Nhap email: ", scanner);
+        } while (checkEmail(email) != null);
         return new Account(userName, password, Account.Role.GUEST, name, dateOfBirth, phoneNumber, email, Account.AccountStatus.INACTIVE);
     }
 
@@ -97,6 +58,7 @@ public class RegisterService {
     public Account checkUsername (String userName) {
         for (Account account : AccountData.getList()) {
             if (userName.equals(account.getUsername())) {
+                System.out.println("Username nay da duoc su dung, vui long chon username khac!");
                 return account;
             }
         }
@@ -107,6 +69,7 @@ public class RegisterService {
     public Account checkEmail (String email) {
         for (Account account : AccountData.getList()) {
             if (email.equals(account.getEmail())) {
+                System.out.println("Email nay da duoc su dung, vui long chon email khac!");
                 return account;
             }
         }
@@ -117,12 +80,11 @@ public class RegisterService {
     public Account checkPhoneNumber (Integer phoneNumber) {
         for (Account account : AccountData.getList()) {
             if (phoneNumber.equals(account.getPhoneNumber())) {
-                return  account;
+                System.out.println("So dien thoai nay da duoc su dung, vui long chon so khac!");
+                return account;
             }
         }
 
         return null;
     }
-
-
 }
