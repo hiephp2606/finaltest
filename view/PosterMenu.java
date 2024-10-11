@@ -20,11 +20,13 @@ public class PosterMenu {
     }
 
     void mainMenu() {
+        System.out.println("===========Chao mung " + loginService.who.getUsername() + " ===========");
         System.out.println("1. Xem cong viec da tao");
         System.out.println("2. Xem don ung tuyen");
         System.out.println("3. Them cong viec");
         System.out.println("4. Xoa cong viec");
         System.out.println("5. Phe duyet don");
+        System.out.println("6. Dang xuat");
     }
 
     void viewJob() {

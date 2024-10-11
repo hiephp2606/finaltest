@@ -29,7 +29,7 @@ public class Menu {
 
     public void beginMenuDisplay () {
         System.out.println("===========TechMaster Work===========");
-        System.out.println(" 1. Dang nhap\n 2. Dang ky");
+        System.out.println("\t1. Dang nhap\n\t2. Dang ky");
     }
 
     public void beginMenuSelect (Scanner scanner) {
@@ -39,9 +39,9 @@ public class Menu {
             int choice1 = Ultis.inputInteger(scanner);
             switch (choice1) {
                 case 1:
-                    do {
-                        try {
-                            loginService.accountLogin(scanner);
+                    try {
+                        loginService.accountLogin(scanner);
+                        if (loginService.who.getAccountStatus().equals(Account.AccountStatus.ACTIVE)) {
                             if (loginService.who.getRole().equals(Account.Role.FINDER)) {
                                 finderMenuService();
                             }
@@ -57,11 +57,12 @@ public class Menu {
                             else if (loginService.who.getRole().equals(Account.Role.GURU)) {
                                 guruMenuService();
                             }
-                        } catch (Exception e) {
-                            System.out.println("Tai khoan nay khong ton tai hoac da bi tu choi duyet!");
-                            break;
                         }
-                    } while (true);
+
+                    } catch (Exception e) {
+                        System.out.println("Tai khoan nay khong ton tai hoac da bi tu choi duyet!");
+                        break;
+                    }
 
                     break;
                 case 2:
@@ -69,6 +70,7 @@ public class Menu {
                     System.out.println("\t1. Nguoi tim viec");
                     System.out.println("\t2. Nguoi giao viec");
                     System.out.println("\t3. Admin");
+                    System.out.println("\t4. Thoat");
                     int choice2 = Ultis.inputInteger(scanner);
                     switch (choice2) {
                         case 1:
@@ -80,6 +82,9 @@ public class Menu {
                         case 3:
                             registerService.createAdminAccount(scanner);
                             break;
+                        case 4:
+
+                            break;
                     }
                     break;
             }
@@ -88,108 +93,124 @@ public class Menu {
 
 
     public void finderMenuService () {
-        finderMenu.mainMenu();
-        System.out.print("Nhap lua chon cua ban: ");
-        int Choice = Integer.parseInt(scanner.nextLine());
-        switch (Choice) {
-            case 1:
-                finderMenu.listJob();
-                break;
+        boolean loop = true;
+        do {
+            finderMenu.mainMenu();
+            int Choice = Ultis.inputInteger(scanner);
+            switch (Choice) {
+                case 1:
+                    finderMenu.listJob();
+                    break;
 
-            case 2:
-                finderMenu.findJob();
-                break;
+                case 2:
+                    finderMenu.findJob();
+                    break;
 
-            case 3:
-                finderMenu.listAplliedJob();
-                break;
+                case 3:
+                    finderMenu.listAplliedJob();
+                    break;
 
-            case 4:
-                finderMenu.listAccpetedJob();
-                break;
+                case 4:
+                    finderMenu.listAccpetedJob();
+                    break;
 
-            case 5:
-                finderMenu.listRejectedJob();
-                break;
+                case 5:
+                    finderMenu.listRejectedJob();
+                    break;
 
-            case 6:
-                finderMenu.removeRequestJob();
-                break;
-        }
-
+                case 6:
+                    finderMenu.removeRequestJob();
+                    break;
+                case 7:
+                    loop = false;
+                    break;
+            }
+        } while (loop == true);
     }
     public void posterMenuService () {
-        posterMenu.mainMenu();
-        System.out.print("Nhap lua chon cua ban: ");
-        int Choice = Integer.parseInt(scanner.nextLine());
-        switch (Choice) {
-            case 1:
-                posterMenu.viewJob();
-                break;
+        boolean loop = true;
+        do {
+            posterMenu.mainMenu();
+            int Choice = Ultis.inputInteger(scanner);
+            switch (Choice) {
+                case 1:
+                    posterMenu.viewJob();
+                    break;
 
-            case 2:
-                posterMenu.viewApplicant();
-                break;
+                case 2:
+                    posterMenu.viewApplicant();
+                    break;
 
-            case 3:
-                posterMenu.createJob();
-                break;
+                case 3:
+                    posterMenu.createJob();
+                    break;
 
-            case 4:
-                posterMenu.deleteJob();
-                break;
+                case 4:
+                    posterMenu.deleteJob();
+                    break;
 
-            case 5:
-                posterMenu.viewApproveJobRequest();
-                break;
-        }
-
+                case 5:
+                    posterMenu.viewApproveJobRequest();
+                    break;
+                case 6:
+                    loop = false;
+                    break;
+            }
+        } while (loop == true);
     }
     public void adminMenuService () {
-        adminMenu.mainMenu();
-        System.out.print("Nhap lua chon cua ban: ");
-        int Choice = Integer.parseInt(scanner.nextLine());
-        switch (Choice) {
-            case 1:
-                adminMenu.approveAccount();
-                break;
+        boolean loop = true;
+        do {
+            adminMenu.mainMenu();
+            int Choice = Ultis.inputInteger(scanner);
+            switch (Choice) {
+                case 1:
+                    adminMenu.approveAccount();
+                    break;
 
-            case 2:
-                adminMenu.approveJob();
-                break;
+                case 2:
+                    adminMenu.approveJob();
+                    break;
 
-            case 3:
-                adminMenu.removeJob();
-                break;
+                case 3:
+                    adminMenu.removeJob();
+                    break;
 
-            case 4:
-                adminMenu.removeAccount();
-                break;
-        }
-
+                case 4:
+                    adminMenu.removeAccount();
+                    break;
+                case 5:
+                    loop = false;
+                    break;
+            }
+        } while (loop == true);
     }
     public void guruMenuService () {
-        guruMenu.mainMenu();
-        System.out.print("Nhap lua chon cua ban: ");
-        int Choice = Integer.parseInt(scanner.nextLine());
-        switch (Choice) {
-            case 1:
-                guruMenu.approveAccount();
-                break;
+        boolean loop = true;
+        do {
+            guruMenu.mainMenu();
+            int Choice = Ultis.inputInteger(scanner);
+            switch (Choice) {
+                case 1:
+                    guruMenu.approveAccount();
+                    break;
 
-            case 2:
-                guruMenu.approveJob();
-                break;
+                case 2:
+                    guruMenu.approveJob();
+                    break;
 
-            case 3:
-                guruMenu.removeJob();
-                break;
+                case 3:
+                    guruMenu.removeJob();
+                    break;
 
-            case 4:
-                guruMenu.removeAccount();
-                break;
-        }
-
+                case 4:
+                    guruMenu.removeAccount();
+                    break;
+                case 5:
+                    loop = false;
+                    break;
+            }
+        } while (loop == true);
     }
 
 }

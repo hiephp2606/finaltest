@@ -30,7 +30,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
             if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
                     && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 inactiveAccount.add(account);
-                System.out.println(account.getId() +". " + account.getUsername() + account.getRole());
+                System.out.println(account.getId() +". " + account.getUsername() +" - " + account.getRole());
             }
         }
     }
@@ -53,7 +53,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 System.out.println(account);
                 break;
             case 2:
-                System.out.println("Nhap lua chon duyet tai khoan cua ban:");
+                System.out.println("Nhap lua chon duyet tai khoan cua ban [activate/ decline]:");
                 System.out.println("\t 1. Active");
                 System.out.println("\t 2. Decline");
 

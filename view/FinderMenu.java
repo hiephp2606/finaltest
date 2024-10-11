@@ -23,12 +23,14 @@ public class FinderMenu {
     }
 
     void mainMenu() {
+        System.out.println("===========Chao mung " + loginService.who.getUsername() + " ===========");
         System.out.println("1. Xem danh sach cong viec");
         System.out.println("2. Tim cong viec");
         System.out.println("3. Xem cong viec da dang ky");
         System.out.println("4. Xem cong viec da duoc nhan");
         System.out.println("5. Xem cong viec bi tu choi");
         System.out.println("6. Huy dang ky cong viec");
+        System.out.println("7. Dang xuat");
     }
 
     void listJob() {
