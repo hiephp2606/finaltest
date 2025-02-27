@@ -2,41 +2,29 @@ package view;
 
 import database.JobData;
 import entities.Account;
-import service.JobService;
-import service.LoginService;
-import service.RegisterService;
-import service.byrole.AdminService;
+import service.common.LoginService;
+import service.common.RegisterService;
 import service.byrole.FinderService;
 import service.byrole.GuruService;
 import service.byrole.PosterService;
-import ultis.Ultis;
+import utils.InputUtils;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     Scanner scanner = new Scanner(System.in);
     LoginService loginService = new LoginService();
     RegisterService registerService = new RegisterService();
-    JobService jobService = new JobService();
-    FinderService finderService;
-    PosterService posterService;
-    AdminService adminService ;
-    GuruService guruService;
-    FinderMenu finderMenu = new FinderMenu(loginService, JobData.getJobList(), jobService, scanner);
+    FinderMenu finderMenu = new FinderMenu(loginService, JobData.getJobList(), scanner);
     PosterMenu posterMenu = new PosterMenu(loginService, scanner);
     AdminMenu adminMenu = new AdminMenu(loginService, scanner);
     GuruMenu guruMenu = new GuruMenu(loginService, scanner);
 
-    public void beginMenuDisplay () {
-        System.out.println("===========TechMaster Work===========");
-        System.out.println("\t1. Dang nhap\n\t2. Dang ky");
-    }
-
     public void beginMenuSelect (Scanner scanner) {
         boolean loop = true;
         while (loop == true) {
-            beginMenuDisplay();
-            int choice1 = Ultis.inputInteger(scanner);
+            int choice1 = InputUtils.loopInputChoice(List.of("===========TechMaster Work===========","\t1. Dang nhap\n\t2. Dang ky"), scanner, 1, 2 );
             switch (choice1) {
                 case 1:
                     try {
@@ -66,12 +54,16 @@ public class Menu {
 
                     break;
                 case 2:
-                    System.out.println("Chon quyen dang nhap");
-                    System.out.println("\t1. Nguoi tim viec");
-                    System.out.println("\t2. Nguoi giao viec");
-                    System.out.println("\t3. Admin");
-                    System.out.println("\t4. Thoat");
-                    int choice2 = Ultis.inputInteger(scanner);
+                    int choice2 = InputUtils.loopInputChoice(
+                            List.of(
+                                    "\t1. Nguoi tim viec",
+                                    "\t2. Nguoi giao viec",
+                                    "\t3. Admin",
+                                    "\t4. Thoat"
+                            ),
+                            scanner,
+                            1,
+                            4);
                     switch (choice2) {
                         case 1:
                             registerService.createFinderAccount(scanner);
@@ -96,7 +88,8 @@ public class Menu {
         boolean loop = true;
         do {
             finderMenu.mainMenu();
-            int Choice = Ultis.inputInteger(scanner);
+            System.out.print("Nhap lua chon cua ban: ");
+            int Choice = InputUtils.loopInputInteger("", scanner);
             switch (Choice) {
                 case 1:
                     finderMenu.listJob();
@@ -107,11 +100,11 @@ public class Menu {
                     break;
 
                 case 3:
-                    finderMenu.listAplliedJob();
+                    finderMenu.listAppliedJob();
                     break;
 
                 case 4:
-                    finderMenu.listAccpetedJob();
+                    finderMenu.listAcceptedJob();
                     break;
 
                 case 5:
@@ -122,6 +115,18 @@ public class Menu {
                     finderMenu.removeRequestJob();
                     break;
                 case 7:
+                    finderMenu.updatePassword();
+                    System.out.println("Cap nhat mat khau thanh cong!");
+                    break;
+                case 8:
+                    finderMenu.updateEmail();
+                    System.out.println("Cap nhat email thanh cong!");
+                    break;
+                case 9:
+                    finderMenu.updatePhonenumber();
+                    System.out.println("Cap nhat so dien thoai thanh cong!");
+                    break;
+                case 10:
                     loop = false;
                     break;
             }
@@ -131,7 +136,8 @@ public class Menu {
         boolean loop = true;
         do {
             posterMenu.mainMenu();
-            int Choice = Ultis.inputInteger(scanner);
+            System.out.print("Nhap lua chon cua ban: ");
+            int Choice = InputUtils.loopInputInteger("", scanner);
             switch (Choice) {
                 case 1:
                     posterMenu.viewJob();
@@ -153,8 +159,21 @@ public class Menu {
                     posterMenu.viewApproveJobRequest();
                     break;
                 case 6:
+                    posterMenu.updatePassword();
+                    System.out.println("Cap nhat mat khau thanh cong!");
+                    break;
+                case 7:
+                    posterMenu.updateEmail();
+                    System.out.println("Cap nhat email thanh cong!");
+                    break;
+                case 8:
+                    posterMenu.updatePhonenumber();
+                    System.out.println("Cap nhat so dien thoai thanh cong!");
+                    break;
+                case 9:
                     loop = false;
                     break;
+
             }
         } while (loop == true);
     }
@@ -162,7 +181,8 @@ public class Menu {
         boolean loop = true;
         do {
             adminMenu.mainMenu();
-            int Choice = Ultis.inputInteger(scanner);
+            System.out.print("Nhap lua chon cua ban: ");
+            int Choice = InputUtils.loopInputInteger("", scanner);
             switch (Choice) {
                 case 1:
                     adminMenu.approveAccount();
@@ -180,6 +200,18 @@ public class Menu {
                     adminMenu.removeAccount();
                     break;
                 case 5:
+                    adminMenu.updatePasword();
+                    System.out.println("Cap nhat mat khau thanh cong!");
+                    break;
+                case 6:
+                    adminMenu.updateEmail();
+                    System.out.println("Cap nhat email thanh cong!");
+                    break;
+                case 7:
+                    adminMenu.updatePhonenumber();
+                    System.out.println("Cap nhat so dien thoai thanh cong!");
+                    break;
+                case 8:
                     loop = false;
                     break;
             }
@@ -189,12 +221,12 @@ public class Menu {
         boolean loop = true;
         do {
             guruMenu.mainMenu();
-            int Choice = Ultis.inputInteger(scanner);
+            System.out.print("Nhap lua chon cua ban: ");
+            int Choice = InputUtils.loopInputInteger("", scanner);
             switch (Choice) {
                 case 1:
                     guruMenu.approveAccount();
                     break;
-
                 case 2:
                     guruMenu.approveJob();
                     break;
@@ -207,6 +239,18 @@ public class Menu {
                     guruMenu.removeAccount();
                     break;
                 case 5:
+                    guruMenu.updatePassword();
+                    System.out.println("Cap nhat mat khau thanh cong!");
+                    break;
+                case 6:
+                    guruMenu.updateEmail();
+                    System.out.println("Cap nhat email thanh cong!");
+                    break;
+                case 7:
+                    guruMenu.updatePhonenumber();
+                    System.out.println("Cap nhat so dien thoai thanh cong");
+                    break;
+                case 8:
                     loop = false;
                     break;
             }

@@ -1,11 +1,6 @@
 package view;
 
-import database.JobRequestData;
-import entities.JobRequest;
-import service.JobPostService;
-import service.JobRequestService;
-import service.JobService;
-import service.LoginService;
+import service.common.LoginService;
 import service.byrole.PosterService;
 
 import java.util.Scanner;
@@ -26,16 +21,17 @@ public class PosterMenu {
         System.out.println("3. Them cong viec");
         System.out.println("4. Xoa cong viec");
         System.out.println("5. Phe duyet don");
-        System.out.println("6. Dang xuat");
+        System.out.println("6. Thay doi mat khau");
+        System.out.println("7. Thay doi email");
+        System.out.println("8. Thay doi so dien thoai");
+        System.out.println("9. Dang xuat");
     }
 
     void viewJob() {
         new PosterService(loginService, scanner).getPost();
     }
 
-    void viewApplicant() {
-        new PosterService(loginService, scanner).getJobRequest();
-    }
+    void viewApplicant() {new PosterService(loginService, scanner).getJobRequest(); }
 
     void createJob() {
         new PosterService(loginService, scanner).createPost();
@@ -48,4 +44,10 @@ public class PosterMenu {
     void viewApproveJobRequest() {
         new PosterService(loginService, scanner).approveJobRequest();
     }
+
+    void updateEmail() {new PosterService(loginService, scanner).updateEmail(); }
+
+    void updatePassword() {new PosterService(loginService, scanner).updatePassword(); }
+
+    void updatePhonenumber() {new PosterService(loginService, scanner).updatePhonenumber(); }
 }

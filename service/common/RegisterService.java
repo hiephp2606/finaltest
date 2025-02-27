@@ -1,4 +1,4 @@
-package service;
+package service.common;
 
 import database.AccountData;
 import entities.Account;
@@ -13,8 +13,7 @@ public class RegisterService {
             userName = InputUtils.loopInputString("Username: ", scanner);
         } while (checkUsername(userName) != null);
 
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
+        String password = InputUtils.loopInputPassword("Nhap password (7 đến 15 ký tự, chứa ít nhất 1 ký tự in hoa, 1 ký tự đặc biệt)", scanner);
         String name = InputUtils.loopInputString("Nhap ho va ten: ", scanner);
         String dateOfBirth = InputUtils.loopInputDate("Nhap ngay/thang/nam sinh: ", scanner);
 

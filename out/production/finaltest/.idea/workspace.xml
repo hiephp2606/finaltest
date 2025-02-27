@@ -5,9 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7a50e65-91f2-407a-b702-892913e8ce9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/service/intf/UpdateEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/UpdatePassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/intf/UpdatePhonenumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/AccountData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/AccountData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/JobData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/JobRequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/JobRequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/Job.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/AccountData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/JobData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/JobData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/database/JobRequestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/database/JobRequestData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account$AccountStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account$AccountStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account$Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account$Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/entities/Job.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/entities/Job.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/AccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/JobPostService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/JobRequestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/JobService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/LoginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/RegisterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/FinderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/FinderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/GuruService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/GuruService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/service/byrole/PosterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/service/byrole/PosterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/ultis/Ultis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/AdminMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/AdminMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/FinderMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/FinderMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/GuruMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/GuruMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/finaltest/view/PosterMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/finaltest/view/PosterMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/common/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/JobPostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/JobRequestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/JobService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/common/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/common/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/FinderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/FinderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/byrole/GuruService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/GuruService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/byrole/PosterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/byrole/PosterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/InputUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/InputUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ValidationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/FinderMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/FinderMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/GuruMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/GuruMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/PosterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/view/PosterMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +102,20 @@
       <recent name="service.intf" />
       <recent name="service" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="finaltest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

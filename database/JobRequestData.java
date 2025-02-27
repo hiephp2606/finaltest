@@ -1,12 +1,12 @@
 package database;
 
-import entities.Job;
 import entities.JobRequest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.*;
 
 public class JobRequestData {
     public static Map<Integer, JobRequest> jobRequestMap = new HashMap<>();
@@ -16,7 +16,14 @@ public class JobRequestData {
     }
 
     public static void saveJobRequest (JobRequest jobRequest) {
-        jobRequestMap.put(jobRequest.getId(), jobRequest);
+        try {
+            String localPath = "C:\\CV\\" + UUID.randomUUID();
+            Files.copy(Path.of(jobRequest.getCV()), Path.of(localPath), StandardCopyOption.REPLACE_EXISTING);
+            jobRequest.setCV(localPath);
+            jobRequestMap.put(jobRequest.getId(), jobRequest);
+        } catch (IOException e) {
+            System.out.println("Tao that bai, file CV co van de!");
+        }
     }
 
     public static JobRequest getJobRequestById (int id) {

@@ -4,20 +4,23 @@ import database.AccountData;
 import database.JobData;
 import entities.Account;
 import entities.Job;
-import service.LoginService;
-import service.intf.ApproveAccount;
-import service.intf.ApproveJob;
-import service.intf.DeleteAccount;
-import service.intf.DeletePost;
-import ultis.Ultis;
+import service.common.LoginService;
+import service.common.RegisterService;
+import service.intf.*;
+import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost {
+public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost, UpdatePassword, UpdateEmail, UpdatePhonenumber {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
+    List<Account> activeAccount = new ArrayList<>();
+    List<Account> inactiveAccount = new ArrayList<>();
+    List<Job> activeJob = new ArrayList<>();
+    List<Job> inactiveJob = new ArrayList<>();
+    RegisterService registerService = new RegisterService();
 
     public AdminService(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
@@ -25,24 +28,22 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
     }
 
     //    Duyet tai khoan
-    public List<Account> listInactiveAccount () {
-        List<Account> inactiveAccount = new ArrayList<>();
+    public void listInactiveAccount () {
         for (Account account : AccountData.getList()) {
-            if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
-                    && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
-                inactiveAccount.add(account);
-                System.out.println(account.getId() +". " + account.getUsername() +" - " + account.getRole());
-            }
+                if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
+                        && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
+                    inactiveAccount.add(account);
+                    System.out.println(account.getId() +". " + account.getUsername() +" - " + account.getRole());
+                }
         }
 
-        return inactiveAccount;
     }
 
 
     public void approveAccountService () {
         boolean loop1 = true;
         boolean loop2 = true;
-        int chooseAccount = Ultis.inputId(scanner);
+        int chooseAccount = InputUtils.loopInputInteger("Nhap ID: ", scanner);
         Account account = AccountData.getAccountById(chooseAccount);
         do {
             System.out.println("Lua chon hanh dong cua ban: ");
@@ -50,7 +51,7 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
             System.out.println("\t 2. Duyet tai khoan");
             System.out.println("\t 3. Exit");
 
-            int choiceActionAccount = Ultis.inputInteger(scanner);
+            int choiceActionAccount = InputUtils.loopInputInteger("Nhap lua chon cua ban: ", scanner);
             switch (choiceActionAccount) {
                 case 1:
                     System.out.println(account);
@@ -62,7 +63,8 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
                     System.out.println("\t 2. Decline");
                     System.out.println("\t 3. Exit");
 
-                    int approveChoice = Ultis.inputInteger(scanner);
+                    System.out.print("Nhap lua chon cua ban: ");
+                    int approveChoice = InputUtils.loopInputInteger("", scanner);
 
                     switch (approveChoice) {
                         case 1:
@@ -86,49 +88,42 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
         } while (loop1 == true);
     }
 
-    //    Xoa tai khoan
-    public List listActiveAccount () {
-        List<Account> activeAccount = new ArrayList<>();
+//    Xoa tai khoan
+    public void listActiveAccount () {
         for (Account account : AccountData.getList()) {
             if (account.getAccountStatus().equals(Account.AccountStatus.ACTIVE)
                     && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 activeAccount.add(account);
-                System.out.println(account.getId() +". " + account.getUsername() + account.getRole());
+                System.out.println(account.getId() +". " + account.getUsername()+ " - " + account.getRole());
             }
         }
-        return activeAccount;
     }
 
     public void removeAccount () {
-        List<Account> listActivatedAccount = listActiveAccount();
-        int chooseId = Ultis.inputId(scanner);
-        for (Account account : listActivatedAccount) {
+        int chooseId = InputUtils.loopInputInteger("Nhap ID: ", scanner);
+        for (Account account : AccountData.getList()) {
             if (chooseId == account.getId() && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 AccountData.removeAccountById(chooseId);
             }
         }
-
     }
 
     //    Duyet cong viec
-    public List listInactiveJob () {
-        List<Job> inActiveJob = new ArrayList<>();
+    public void listInactiveJob () {
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
-                inActiveJob.add(job);
-                job.printDetail();
+                inactiveJob.add(job);
+                System.out.println(job.printDetail());
             }
         }
 
-        return inActiveJob;
     }
 
     public void approveJobService () {
-        List<Job> listInactivatedJob = listInactiveJob();
 
-        int chooseIdJob = Ultis.inputId(scanner);
+        int chooseIdJob = InputUtils.loopInputInteger("Nhap ID: ", scanner);
 
-        for (Job job : listInactivatedJob) {
+        for (Job job : inactiveJob) {
             if (chooseIdJob == job.getId()) {
                 System.out.print("Nhap lua chon [Duyet/ Tu choi]: ");
                 String choice = scanner.nextLine();
@@ -147,11 +142,10 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
 
     //    Xoa cong viec
     public List<Job> listActiveJob () {
-        List<Job> activeJob = new ArrayList<>();
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
                 activeJob.add(job);
-                job.printDetail();
+                System.out.println(job.printDetail());
             }
         }
 
@@ -159,8 +153,7 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
     }
 
     public void removeJob () {
-        List<Job> activeJob = listActiveJob();
-        int id = Ultis.inputId(scanner);
+        int id = InputUtils.loopInputInteger("Nhap ID: ", scanner);
         for (Job job : activeJob) {
             if (id == job.getId()) {
                 JobData.removeJob(id);
@@ -168,10 +161,14 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
         }
     }
 
+//    updatePassword
+
+
 
     @Override
     public void approveAccount() {
-        if (listInactiveAccount().size() != 0) {
+        listInactiveAccount();
+        if (!inactiveAccount.isEmpty()) {
             approveAccountService();
         }
         else {
@@ -182,7 +179,8 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
 
     @Override
     public void approveJob() {
-        if (listInactiveJob().size() != 0) {
+        listInactiveJob();
+        if (!inactiveJob.isEmpty()) {
             approveJobService();
         }
         else {
@@ -193,7 +191,8 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
 
     @Override
     public void deletePost() {
-        if (listActiveJob().size() != 0) {
+        listActiveJob();
+        if (!activeJob.isEmpty()) {
             removeJob();
         }
         else {
@@ -205,12 +204,48 @@ public class AdminService implements ApproveAccount, DeleteAccount, ApproveJob, 
 
     @Override
     public void deleteAccount() {
-        if (listActiveAccount().size() != 0) {
+        listActiveAccount();
+        if (!activeAccount.isEmpty()) {
             removeAccount();
         }
         else {
             System.out.println("Hien tai dang khong co tai khoan nao kha dung!");
         }
 
+    }
+
+    @Override
+    public void updateEmail() {
+        do {
+            String email = InputUtils.loopInputEmail("Cap nhat email: ", scanner);
+                if (registerService.checkEmail(email) != null) {
+
+                }
+                else {
+                    AccountData.getAccountById(loginService.who.getId()).setEmail(email);
+                    break;
+                }
+        } while (true);
+
+    }
+
+    @Override
+    public void updatePassword() {
+        String password = InputUtils.loopInputPassword("Cap nhat password", scanner);
+        AccountData.getAccountById(loginService.who.getId()).setPassword(password);
+    }
+
+    @Override
+    public void updatePhonenumber() {
+        do {
+            int phoneNumber = InputUtils.loopInputPhoneNumber("Cap nhat so dien thoai: ", scanner);
+                if (registerService.checkPhoneNumber(phoneNumber) != null) {
+
+                }
+                else {
+                    AccountData.getAccountById(loginService.who.getId()).setPhoneNumber(phoneNumber);
+                    break;
+                }
+        } while (true);
     }
 }

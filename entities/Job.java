@@ -119,7 +119,16 @@ public class Job {
     }
 
     public String printDetail() {
-        return String.join("\n", getJobTitle(), getStatus().toString(), getSalary().toString(), getEmployeeNumber().toString(), getPlaceType().toString(), getTimeType().toString(), getJobDescribe());
+        StringBuilder builder = new StringBuilder();
+        builder.append("ID: ").append(getId().toString()).append("\n");
+        builder.append("\tTieu de: ").append(getJobTitle()).append("\n");
+        builder.append("\tTrang thai:").append(getStatus().toString()).append("\n");
+        builder.append("\tLuong: ").append(getSalary().toString()).append("\n");
+        builder.append("\tSo ung vien: ").append(getEmployeeNumber().toString()).append("\n");
+        builder.append("\tDia diem: ").append(getPlaceType().toString()).append("\n");
+        builder.append("\tThoi gian: ").append(getTimeType().toString()).append("\n");
+        builder.append("\tMo ta: ").append(getJobDescribe()).append("\n");
+        return builder.toString();
     }
 
     public String printBrief() {

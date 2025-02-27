@@ -1,12 +1,9 @@
 package view;
 
-import entities.Account;
-import entities.Job;
-import service.LoginService;
-import service.byrole.AdminService;
+import service.byrole.GuruService;
+import service.byrole.PosterService;
+import service.common.LoginService;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -23,24 +20,36 @@ public class AdminMenu {
         System.out.println("\t1. Duyet tai khoan ");
         System.out.println("\t2. Duyet cong viec ");
         System.out.println("\t3. Xoa cong viec ");
-        System.out.println("\t4. Xoa tai khoan");
-        System.out.println("\t5. Dang xuat");
+        System.out.println("\t4. Xoa tai khoan ");
+        System.out.println("\t5. Cap nhat mat khau ");
+        System.out.println("\t6. Cap nhat email ");
+        System.out.println("\t7. Cap nhat so dien thoai ");
+        System.out.println("\t8. Dang xuat");
+
     }
 
     void approveAccount () {
-        new AdminService(loginService, scanner).approveAccount();
+        new GuruService(loginService, scanner).approveAccount();
     }
 
     void approveJob () {
-            new AdminService(loginService, scanner).approveJob();
+            new GuruService(loginService, scanner).approveJob();
     }
 
     void removeJob () {
-            new AdminService(loginService, scanner).deletePost();
+            new GuruService(loginService, scanner).deletePost();
     }
 
     void removeAccount () {
-            new AdminService(loginService, scanner).removeAccount();
+            new GuruService(loginService, scanner).deleteAccount();
     }
+
+    void updatePasword () {new GuruService(loginService, scanner).updatePassword(); }
+
+    void updateEmail () {new GuruService(loginService, scanner).updateEmail(); }
+
+    void updatePhonenumber() {new PosterService(loginService, scanner).updatePhonenumber(); }
+
+
 
 }

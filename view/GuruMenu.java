@@ -1,12 +1,9 @@
 package view;
 
-import entities.Account;
-import entities.Job;
-import service.LoginService;
+import service.byrole.PosterService;
+import service.common.LoginService;
 import service.byrole.GuruService;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GuruMenu {
@@ -24,7 +21,10 @@ public class GuruMenu {
         System.out.println("\t2. Duyet cong viec ");
         System.out.println("\t3. Xoa cong viec ");
         System.out.println("\t4. Xoa tai khoan ");
-        System.out.println("\t5. Dang xuat");
+        System.out.println("\t5. Cap nhat mat khau ");
+        System.out.println("\t6. Cap nhat email ");
+        System.out.println("\t7. Cap nhat so dien thoai ");
+        System.out.println("\t8. Dang xuat");
 
     }
 
@@ -37,11 +37,17 @@ public class GuruMenu {
     }
 
     void removeJob () {
-            new GuruService(loginService, scanner).deletePost();
+        new GuruService(loginService, scanner).deletePost();
     }
 
     void removeAccount () {
             new GuruService(loginService, scanner).deleteAccount();
     }
+
+    void updateEmail () {new GuruService(loginService, scanner).updateEmail(); }
+
+    void updatePassword () {new GuruService(loginService, scanner).updatePassword(); }
+
+    void updatePhonenumber() {new PosterService(loginService, scanner).updatePhonenumber(); }
 
 }

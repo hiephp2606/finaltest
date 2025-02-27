@@ -1,7 +1,8 @@
-package service;
+package service.common;
 
 import database.AccountData;
 import entities.Account;
+import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,27 +26,35 @@ public class AccountService {
 
 
     public void approveAccount () {
-        System.out.print("Nhap id tai khoan ban muon duyet: ");
-        int chooseAccount = Integer.parseInt(scanner.nextLine());
+        int chooseAccount = InputUtils.loopInputInteger("Nhap id tai khoan ban muon duyet: ", scanner);
         Account account = AccountData.getAccountById(chooseAccount);
 
-        System.out.println("Lua chon hanh dong cua ban: ");
-        System.out.println("\t 1. Xem thong tin tai khoan");
-        System.out.println("\t 2. Duyet tai khoan");
-        System.out.print("Nhap lua chon cua ban: ");
+        int choiceActionAccount = InputUtils.loopInputChoice(
+                List.of(
+                        "Lua chon hanh dong cua ban: ",
+                        "\t 1. Xem thong tin tai khoan",
+                        "\t 2. Duyet tai khoan"
+                ),
+                scanner,
+                1,
+                2);
 
-        int choiceActionAccount = Integer.parseInt(scanner.nextLine());
+         Integer.parseInt(scanner.nextLine());
 
         switch (choiceActionAccount) {
             case 1:
                 System.out.println(account);
                 break;
             case 2:
-                System.out.println("Nhap lua chon duyet tai khoan cua ban:");
-                System.out.println("\t 1. Active");
-                System.out.println("\t 2. Decline");
-
-                int approveChoice = Integer.parseInt(scanner.nextLine());
+                int approveChoice = InputUtils.loopInputChoice(
+                    List.of(
+                            "Nhap lua chon duyet tai khoan cua ban:",
+                            "\t 1. Active",
+                            "\t 2. Decline"
+                    ),
+                    scanner,
+                    1,
+                    2);
 
                 switch (approveChoice) {
                     case 1:
@@ -59,5 +68,8 @@ public class AccountService {
         }
     }
 
-//
+// Cap nhat
+    public void updateEmail () {
+
+    }
 }

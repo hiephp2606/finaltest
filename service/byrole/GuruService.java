@@ -4,24 +4,23 @@ import database.AccountData;
 import database.JobData;
 import entities.Account;
 import entities.Job;
-import service.LoginService;
-import service.intf.ApproveAccount;
-import service.intf.ApproveJob;
-import service.intf.DeleteAccount;
-import service.intf.DeletePost;
-import ultis.Ultis;
+import service.common.LoginService;
+import service.common.RegisterService;
+import service.intf.*;
+import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost {
+public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, DeletePost, UpdateEmail, UpdatePassword, UpdatePhonenumber {
     LoginService loginService;
     Scanner scanner = new Scanner(System.in);
     List<Account> activeAccount = new ArrayList<>();
     List<Account> inactiveAccount = new ArrayList<>();
     List<Job> activeJob = new ArrayList<>();
     List<Job> inactiveJob = new ArrayList<>();
+    RegisterService registerService = new RegisterService();
 
     public GuruService(LoginService loginService, Scanner scanner) {
         this.loginService = loginService;
@@ -34,7 +33,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 if (account.getAccountStatus().equals(Account.AccountStatus.INACTIVE)
                         && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                     inactiveAccount.add(account);
-                    System.out.println(account.getId() +". " + account.getUsername() +" - " + account.getRole());
+                    System.out.println("\t"+account.getId() +". " + account.getUsername() +" - " + account.getRole());
                 }
         }
 
@@ -44,7 +43,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     public void approveAccountService () {
         boolean loop1 = true;
         boolean loop2 = true;
-        int chooseAccount = Ultis.inputId(scanner);
+        int chooseAccount = InputUtils.loopInputInteger("Nhap ID: ", scanner);
         Account account = AccountData.getAccountById(chooseAccount);
         do {
             System.out.println("Lua chon hanh dong cua ban: ");
@@ -52,7 +51,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
             System.out.println("\t 2. Duyet tai khoan");
             System.out.println("\t 3. Exit");
 
-            int choiceActionAccount = Ultis.inputInteger(scanner);
+            int choiceActionAccount = InputUtils.loopInputInteger("Nhap lua chon cua ban: ", scanner);
             switch (choiceActionAccount) {
                 case 1:
                     System.out.println(account);
@@ -64,7 +63,8 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                     System.out.println("\t 2. Decline");
                     System.out.println("\t 3. Exit");
 
-                    int approveChoice = Ultis.inputInteger(scanner);
+                    System.out.print("Nhap lua chon cua ban: ");
+                    int approveChoice = InputUtils.loopInputInteger("", scanner);
 
                     switch (approveChoice) {
                         case 1:
@@ -100,7 +100,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     }
 
     public void removeAccount () {
-        int chooseId = Ultis.inputId(scanner);
+        int chooseId = InputUtils.loopInputInteger("Nhap ID: ", scanner);
         for (Account account : AccountData.getList()) {
             if (chooseId == account.getId() && loginService.who.getRole().ordinal() < account.getRole().ordinal()) {
                 AccountData.removeAccountById(chooseId);
@@ -113,7 +113,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
                 inactiveJob.add(job);
-                job.printDetail();
+                System.out.println(job.printDetail());
             }
         }
 
@@ -121,7 +121,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
 
     public void approveJobService () {
 
-        int chooseIdJob = Ultis.inputId(scanner);
+        int chooseIdJob = InputUtils.loopInputInteger("Nhap ID: ", scanner);
 
         for (Job job : inactiveJob) {
             if (chooseIdJob == job.getId()) {
@@ -129,12 +129,14 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
                 String choice = scanner.nextLine();
                 if (choice.equalsIgnoreCase("Duyet")) {
                     job.setJobStatus(Job.JobStatus.ACTIVE);
+                    System.out.println("Duyet cong viec thanh cong");
                 }
                 else if (choice.equalsIgnoreCase("Tu choi")) {
                     job.setJobStatus(Job.JobStatus.DECLINE);
+                    System.out.println("Da tu choi duyet cong viec");
                 }
                 else {
-                    System.out.println("Vui long vhi nhap 'Duyet' hoac 'Tu choi'");
+                    System.out.println("Vui long chi nhap 'Duyet' hoac 'Tu choi'");
                 }
             }
         }
@@ -145,7 +147,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
         for (Job job : JobData.getJobList()) {
             if (job.getJobStatus().equals(Job.JobStatus.INACTIVE)) {
                 activeJob.add(job);
-                job.printDetail();
+                System.out.println(job.printDetail());
             }
         }
 
@@ -153,7 +155,7 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
     }
 
     public void removeJob () {
-        int id = Ultis.inputId(scanner);
+        int id = InputUtils.loopInputInteger("Nhap ID: ", scanner);
         for (Job job : activeJob) {
             if (id == job.getId()) {
                 JobData.removeJob(id);
@@ -209,5 +211,40 @@ public class GuruService implements ApproveAccount, DeleteAccount, ApproveJob, D
             System.out.println("Hien tai dang khong co tai khoan nao kha dung!");
         }
 
+    }
+
+    @Override
+    public void updateEmail() {
+        do {
+            String email = InputUtils.loopInputEmail("Cap nhat email: ", scanner);
+                if (registerService.checkEmail(email) != null) {
+
+                }
+                else {
+                    AccountData.getAccountById(loginService.who.getId()).setEmail(email);
+                    break;
+                }
+
+        } while (true);
+    }
+
+    @Override
+    public void updatePassword() {
+        String password = InputUtils.loopInputPassword("Cap nhat password: ", scanner);
+        AccountData.getAccountById(loginService.who.getId()).setPassword(password);
+    }
+
+    @Override
+    public void updatePhonenumber() {
+        do {
+            int phoneNumber = InputUtils.loopInputPhoneNumber("Cap nhat so dien thoai: ", scanner);
+                if (registerService.checkPhoneNumber(phoneNumber) != null) {
+
+                }
+                else {
+                    AccountData.getAccountById(loginService.who.getId()).setPhoneNumber(phoneNumber);
+                    break;
+                }
+        } while (true);
     }
 }
